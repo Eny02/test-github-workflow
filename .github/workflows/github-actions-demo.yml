@@ -1,0 +1,23 @@
+name: github-actions-demo
+on: [ push ]
+jobs:
+  wersja-python:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Wersja python
+      run: python -V
+      
+  pylint:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Sprawdź kod
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+    - name: instalacja pylint
+      run: pip install pylint
+    - name: instalacja flask
+      run: pip install flask
+    - name: uruchom pylint
+      run: pylint .github/app.py
